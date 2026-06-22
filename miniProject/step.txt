@@ -1,5 +1,0 @@
-create user=>register
-login
-users can add post
-post like
-post delete
