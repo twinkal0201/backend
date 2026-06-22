@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users App</title>
+</head>
+
+<body style="
+    margin:0;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+    background:#18181b;
+">
+
+<div style="
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    gap:25px;
+    align-items:flex-start;
+">
+
+    <!-- Create User Form -->
+    <div style="
+        flex:1;
+        background:#27272a;
+        padding:25px;
+        border-radius:15px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    ">
+
+        <h1 style="
+            color:white;
+            text-align:center;
+            margin-top:0;
+            margin-bottom:25px;
+        ">
+            Login your account
+        </h1>
+
+        <form action="/login" method="POST">
+
+            
+            <input
+                type="text"
+                name="email"
+                placeholder="Enter email..."
+                required
+                style="
+                    width:100%;
+                    padding:12px;
+                    margin-bottom:15px;
+                    border:none;
+                    border-radius:10px;
+                    background:#3f3f46;
+                    color:white;
+                    font-size:16px;
+                    box-sizing:border-box;
+                "
+            >
+
+            <input
+                type="text"
+                name="password"
+                placeholder="Enter password "
+                required
+                style="
+                    width:100%;
+                    padding:12px;
+                    margin-bottom:15px;
+                    border:none;
+                    border-radius:10px;
+                    background:#3f3f46;
+                    color:white;
+                    font-size:16px;
+                    box-sizing:border-box;
+                "
+            >
+        
+            <button
+                type="submit"
+                style="
+                    width:100%;
+                    padding:12px;
+                    border:none;
+                    border-radius:10px;
+                    background:#22c55e;
+                    color:white;
+                    font-size:16px;
+                    font-weight:bold;
+                    cursor:pointer;
+                "
+            >
+                Create User
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#18181b;
+    color:white;
+    padding:30px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.logout-btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#dc2626;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.profile-card{
+    background:#27272a;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:25px;
+}
+
+.profile-card h1{
+    margin-top:10px;
+}
+
+.post-form{
+    background:#27272a;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:25px;
+}
+
+textarea{
+    width:100%;
+    min-height:120px;
+    resize:none;
+    padding:12px;
+    border:none;
+    outline:none;
+    border-radius:8px;
+    margin-top:10px;
+    background:#3f3f46;
+    color:white;
+}
+
+.submit-btn{
+    margin-top:15px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.posts-section h2{
+    margin-bottom:15px;
+}
+
+.post-card{
+    background:#27272a;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.post-card h4{
+    color:#60a5fa;
+    margin-bottom:8px;
+}
+
+.post-card p{
+    margin-bottom:12px;
+    line-height:1.5;
+}
+
+.actions{
+    display:flex;
+    gap:15px;
+}
+
+.actions a{
+    text-decoration:none;
+    color:white;
+    padding:6px 12px;
+    border-radius:6px;
+}
+
+.like-btn{
+    background:#16a34a;
+}
+
+.edit-btn{
+    background:#eab308;
+    color:black !important;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <a href="/logout" class="logout-btn">Logout</a>
+
+    <div class="profile-card">
+        <h3>User Profile</h3>
+        <h1><%= user.name %></h1>
+        <p><%= user.email %></p>
+    </div>
+
+    <div class="post-form">
+        <h3>Create New Post</h3>
+
+        <form action="/post" method="POST">
+            <textarea
+                name="content"
+                placeholder="What's on your mind?"
+                required
+            ></textarea>
+
+            <button type="submit" class="submit-btn">
+                Create Post
+            </button>
+        </form>
+    </div>
+
+    <div class="posts-section">
+        <h2>Your Posts</h2>
+
+        <% if(user.posts && user.posts.length > 0){ %>
+
+            <% user.posts.reverse().forEach(function(post){ %>
+
+                <div class="post-card">
+                    <h4>@<%= user.username %></h4>
+
+                    <p><%= post.content %></p>
+
+                    <div class="actions">
+                        <small> <%=post.likes.length%> likes</small>
+                        <a href="/like/<%= post._id %>" class="like-btn">
+                            <%= post.likes.indexOf(user._id) === -1 ? "Like": "UnLike" %>
+                        </a>
+
+                        <a href="/edit/<%= post._id %>" class="edit-btn">
+                            Edit
+                        </a>
+                    </div>
+                </div>
+
+            <% }) %>
+
+        <% } else { %>
+
+            <div class="post-card">
+                <p>No posts yet. Create your first post!</p>
+            </div>
+
+        <% } %>
+
+    </div>
+
+</div>
+
+</body>
+</html>
